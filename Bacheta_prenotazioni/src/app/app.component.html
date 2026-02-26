@@ -1,0 +1,38 @@
+<div class="container mt-4">
+  <h1 class="text-center mb-4">Prenotazioni Studio Dentistico</h1>
+
+  <!-- FORM INSERIMENTO -->
+  <div class="card p-3 mb-4">
+    <h4>Nuova Prenotazione</h4>
+
+    <form #formPrenotazione="ngForm" (ngSubmit)="aggiungiPrenotazione()">
+      <input type="text" class="form-control mb-2"
+        name="nome" [(ngModel)]="nuovaPrenotazione.nome"
+        placeholder="Nome Paziente" required>
+
+      <input type="date" class="form-control mb-2"
+        name="data" [(ngModel)]="nuovaPrenotazione.data" required>
+
+      <input type="time" class="form-control mb-2"
+        name="ora" [(ngModel)]="nuovaPrenotazione.ora" required>
+
+      <input type="text" class="form-control mb-2"
+        name="tipoVisita" [(ngModel)]="nuovaPrenotazione.tipoVisita"
+        placeholder="Tipo Visita (es: Controllo)" required>
+
+      <button class="btn btn-primary">Aggiungi</button>
+    </form>
+  </div>
+
+  <!-- LISTA PRENOTAZIONI -->
+  <app-lista-prenotazioni
+    [prenotazioni]="prenotazioni"
+    (selezionaPrenotazione)="mostraDettagli($event)">
+  </app-lista-prenotazioni>
+
+  <!-- DETTAGLI -->
+  <app-dettagli-prenotazione
+    [prenotazione]="prenotazioneSelezionata">
+  </app-dettagli-prenotazione>
+
+</div>
